@@ -26,3 +26,32 @@
              getWeather(lat, long);
     }
 
+    function showError(error) {
+        lat = 23.6815303; 
+        long = 46.8761724;
+        getWeather(lat, long);
+        x.innerHTML = "Latitude: " + lat +
+            "<br>Longitude: " + long +
+            "<p>Não detectamos sua localização, usando localização padrão São Paulo, BRA</p>";
+    }
+    function getWeather(lat, long) {
+        var ajax = new XMLHttpRequest();
+        var json;
+        var apiKey = "570f0890767fafeae66141ccc2b7ef15";
+        var url = "http://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon="+ long +"&appid=" + apiKey +"&units=metric";
+        ajax.open("GET", url, true);
+        ajax.send();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                json = JSON.parse(ajax.responseText);
+                if (json != undefined) {
+                    var weather = json.weather[0].main;
+                    var temperatura = Math.round(json.main.temp) + "°C";
+                    temp.innerHTML = temperatura;
+                } else {
+                    description = "Ops, não consegui encontrar as informações do tempo ='( " + location;
+                    document.getElementById("description").innerHTML = description;
+                }
+            }
+        }
+    }
