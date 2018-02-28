@@ -3,6 +3,7 @@
     var state = document.getElementById('state');
     var city = document.getElementById('city');
     var temp = document.getElementById('temp');
+    var errorbox = document.getElementById('errorbox');
 
     function callback(data) {
         country.innerHTML = data.country_name;
@@ -33,6 +34,21 @@
         x.innerHTML = "Latitude: " + lat +
             "<br>Longitude: " + long +
             "<p>Não detectamos sua localização, usando localização padrão São Paulo, BRA</p>";
+
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                  errorbox.innerHTML="Ambiente Sem HTTPS"
+                  break;
+                case error.POSITION_UNAVAILABLE:
+                  errorbox.innerHTML="Localização indisponível."
+                  break;
+                case error.TIMEOUT:
+                  errorbox.innerHTML="A requisição expirou."
+                  break;
+                case error.UNKNOWN_ERROR:
+                  errorbox.innerHTML="Algum erro desconhecido aconteceu."
+                  break;
+            }    
     }
     function getWeather(lat, long) {
         var ajax = new XMLHttpRequest();
