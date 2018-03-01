@@ -28,8 +28,8 @@
     }
 
     function showError(error) {
-        lat = 23.6815303; 
-        long = 46.8761724;
+        lat = -23.6815303; 
+        long = -46.8761724;
         getWeather(lat, long);
         x.innerHTML = "Latitude: " + lat +
             "<br>Longitude: " + long +
