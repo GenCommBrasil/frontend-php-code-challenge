@@ -12,14 +12,14 @@
     }
 
     function locationNotReceived(positionError){
-        $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Okinawa,jp&APPID='+ apiKey +'&units=metric', function(result){
+        $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Sao Paulo,BR&APPID='+ apiKey +'&units=metric', function(result){
             console.log(result);
             weatherTemplate(result);
         });
     }
 
     if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(onPositionReceived, locationNotReceived, {timeout:0});
+        navigator.geolocation.getCurrentPosition(onPositionReceived, locationNotReceived);
     }
 
 }());
