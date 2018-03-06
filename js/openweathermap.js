@@ -8,33 +8,32 @@
         var temp = res.main.temp;
         var minTemp = res.main.temp_min;
         var maxTemp = res.main.temp_max;
-        var pressure = res.main.pressure;
         var humidity = res.main.humidity;
-    
-        var urlIcon = "../images/" + icon + ".png";
-    
-        jQuery('#icon').prepend('<img src=' + urlIcon + ' width="80" height="80">');
+
+        var iconSRC = jQuery("#icon img").attr('src').replace("01d",icon);
+        jQuery("#icon img").attr('src', iconSRC).show();
         jQuery('#currentLocation').html(currentLocation);
         jQuery('#temp').html(Math.round(temp) + '°C');
-        jQuery('#minTemp').html('<span>Mínima</span>' + minTemp + '°C');
-        jQuery('#maxTemp').html('<span>Máxima</span>' + maxTemp + '°C');
-        jQuery('#pressure').html('<span>Pressão</span>' + pressure + 'hPa');
-        jQuery('#humidity').html('<span>Humidade</span>' + humidity + '%');
+        jQuery('#minTemp').html('<span>Mínima</span> ' + Math.round(minTemp) + '°C');
+        jQuery('#maxTemp').html('<span>Máxima</span> ' + Math.round(maxTemp) + '°C');
+        jQuery('#humidity').html('<span>Humidade</span> ' + humidity + '%');
     }
 
     function onPositionReceived(position){
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-
-        jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?lat='+ lat +'&lon='+ long +'&APPID='+ apiKey +'&units=metric', function(result){
-            console.log(result);
-            weatherTemplate(result);
-        });
+        
+        jQuery.getJSON('https://ipinfo.io/json', function(position){
+            var city = position.region;
+            var country = position.country;
+            
+            jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?q='+ city + ',' + country + '&APPID='+ apiKey +'&units=metric', function(result){
+                weatherTemplate(result);
+            });
+        })       
+        
     }
 
     function locationNotReceived(positionError){
-        jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Sao Paulo,BR&APPID='+ apiKey +'&units=metric', function(result){
-            console.log(result);
+        jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Tokio,JP&APPID='+ apiKey +'&units=metric', function(result){
             weatherTemplate(result);
         });
     }

@@ -32,16 +32,16 @@ function registerPluginScripts(){
 }
 
 function showWeathermap() {
+    $dir = plugin_dir_url( __FILE__ );
     echo '<div id="weather">';
     echo '   <div id="currentLocation"></div>';
-    echo '      <div id="icon">';
+    echo '   <div id="icon"><img src="'.$dir.'images/01d.png" width="100%" height="100%" style="display:none;">';
     echo '      <div id="temp"></div>';
     echo '   </div>';
     echo '   <div class="prevent">';
     echo '      <div id="minTemp"></div>';
     echo '      <div id="maxTemp"></div>';
     echo '      <div id="humidity"></div>';
-    echo '      <div id="pressure"></div>';
     echo '   </div>';
     echo '</div>';
   }
