@@ -27,7 +27,6 @@ class Openweathermap {
 function registerPluginScripts(){
     wp_register_style('openweathermap', plugin_dir_url(__FILE__).'/css/style.css');
     wp_register_script( 'openweathermap', plugins_url( '/js/openweathermap.js', __FILE__ ), 'jquery', 1.0, true);
-    wp_register_script( 'openweathermap', plugins_url( '/js/weatherTemplate.js', __FILE__ ), 'jquery', 1.0, true);
     wp_enqueue_style('openweathermap');
     wp_enqueue_script( 'openweathermap' );
 }
