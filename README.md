@@ -29,5 +29,5 @@ O resultado final deverá ser o apresentado abaixo:
 
 ### Personalização
 
-É possível personalizar o plugin por completo, anterando imagens, CSS e até mesmo sua funcionalidade.
+É possível personalizar o plugin por completo, alterando imagens, CSS e até mesmo sua funcionalidade.
 Os arquivos de imagens podem ser encontrados na pasta `images` do plugin, os ícones de tempo devem manter os mesmos nomes para que possam funcionar corretamente.
