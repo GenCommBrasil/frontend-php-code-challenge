@@ -1,0 +1,54 @@
+div#weather{
+    display: block;
+    max-width: 155px;
+    text-align: center;
+    position: relative;
+}
+
+div#currentLocation {
+    font-size: 24px;
+    color: #069;
+    font-weight: bold;
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+}
+
+div#icon{
+    position: relative;
+    display: block;
+}
+
+div#icon img{
+    display: block;
+}
+
+div#temp{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    color: #069;
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+div#prevent{
+    display: block;
+    width: 100%;
+    font-size: 10px;
+}
+
+#minTemp span, #maxTemp span, #humidity span, #pressure span{
+    display: block;
+    color: #333;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#minTemp, #maxTemp, #humidity, #pressure{
+    display: inline-block;
+    font-size: 10px;
+    
+}
