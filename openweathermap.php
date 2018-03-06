@@ -34,6 +34,7 @@ function registerPluginScripts(){
 function showWeathermap() {
     $dir = plugin_dir_url( __FILE__ );
     echo '<div id="weather">';
+    echo '<div id="error"></div>';
     echo '   <div id="currentLocation"></div>';
     echo '   <div id="icon"><img src="'.$dir.'images/01d.png" width="100%" height="100%" style="display:none;">';
     echo '      <div id="temp"></div>';

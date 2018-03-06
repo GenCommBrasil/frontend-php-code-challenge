@@ -26,7 +26,11 @@
             var country = position.country;
             
             jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?q='+ city + ',' + country + '&APPID='+ apiKey +'&units=metric', function(result){
-                weatherTemplate(result);
+                if(result != undefined || result != null){
+                    weatherTemplate(result);
+                }else{
+                    jQuery("#error").html('<span>Previsão do tempo indisponível.</span>');
+                }
             });
         })       
         
@@ -34,7 +38,11 @@
 
     function locationNotReceived(positionError){
         jQuery.getJSON('http://api.openweathermap.org/data/2.5/weather?q=Tokio,JP&APPID='+ apiKey +'&units=metric', function(result){
-            weatherTemplate(result);
+            if(result != undefined || result != null){
+                weatherTemplate(result);
+            }else{
+                jQuery("#error").html('<span>Previsão do tempo indisponível.</span>');
+            } 
         });
     }
 
