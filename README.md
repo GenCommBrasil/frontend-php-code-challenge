@@ -1,25 +1,33 @@
-## Desafio de código Front End PHP
+## Sobre o projeto
 
-Criar um plugin para Wordpress que exiba a temperatura atual para a cidade detectada no navegador do usuário, buscando informaçes via API do site [https://openweathermap.org/current](https://openweathermap.org/current).
+Plugin desenvolvido para Wordpress com a finalidade de exibir a previsão do tempo para a cidade atual, utilizando geolocalização para extrair a `latitude` e `longitude` do browser do usuário.
 
-### Detalhes
+O plugin solicitará a permissão do usuário para acessar a sua localização atual, porém, caso o mesmo não permita, o plugin exibirá como padrão a previsão do tempo da cidade de `São Paulo`.
 
-* Você deverá exibir a cidade atual e a previsão do tempo no header da home no formato "Cidade, temperatura (em grau Celcius)";
-* Siga a identifidade visual do site [Rakuten Digital Commerce](https://digitalcommerce.rakuten.com.br/);
-* Caso o usuário não permita a localização geográfica no navegador, utilizar `São Paulo, BRA` como cidade padrão;
-* Caso a chamada da API retorne erro, exibir `Previsão do tempo indisponvel`;
+### Instalação
 
-### Entrega
+Para realizar a instalação do plugin, basta seguir os passos abaixo:
 
-* Faça um fork deste repositório em seu GitHub;
-* Inclua um README detalhado no projeto;
-* Abra um [Pull Request](https://help.github.com/articles/about-pull-requests/) com seu código e uma breve descrição do plugin e como instalá-lo no Wordpress;
+* Realizar o download do plugin [Openweathermap](http://rigotedesign.com.br/downloads/plugins/openweathermap.zip);
+* Acesse o painel administrativo do seu site Wordpress e clique na opção `plugins`, em seguida clique em `Adicionar novo`;
+* Na tela seguinte, clique em `Enviar plugin`, em seguida selecione o arquivo baixado `openweathermap.rar` e clique em `Instalar agora`;
+* Feito isso, basta acessar a página de `plugins` e ativar o mesmo.
 
-### Critérios de avaliação
-* Alcançar os objetivos propostos;
-* Qualidade de código;
-* Commits parciais, mostrando a linha de desenvolvimento;
-* Boa descrição das funcionalidades do desafio;
-* Não utilização de bibliotecas ou frameworks;
+### Implementação
 
-_Boa sorte!_
+Para implementar o plugin em seu thema, basta incluir em suas páginas ou posts o shortcode `[weathermap]`, ao fazer isso, o plugin será exibido no local em que foi implementado o shortcode automaticamente.
+
+![Shortcode](http://rigotedesign.com.br/downloads/plugins/shortcode.PNG)
+
+Para implementar o plugin em uma área específica do código do seu thema ou site, basta utilizar o shortcode via PHP `<?php echo do_shortcode('[weathermap]'); ?>`, dessa forma o plugin será renderizado no local em que for implementado a tag.
+
+![Shortcode no PHP](http://rigotedesign.com.br/downloads/plugins/shortcodePHP.PNG)
+
+O resultado final deverá ser o apresentado abaixo:
+
+![Openweathermap em exibição](http://rigotedesign.com.br/downloads/plugins/openweathermap.PNG)
+
+### Personalização
+
+É possível personalizar o plugin por completo, anterando imagens, CSS e até mesmo sua funcionalidade.
+Os arquivos de imagens podem ser encontrados na pasta `images` do plugin, os ícones de tempo devem manter os mesmos nomes para que possam funcionar corretamente.
