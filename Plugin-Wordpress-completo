@@ -1,1 +1,96 @@
+<?php
+/*
+Plugin Name:Geo Clima
+Description: Inclua Geolocalização através de um Sortcode [Clima] para exibir   
+version: Beta 1.0
+Author: Cesário José de Carvalho.
+Author URL: http:cesario.pro.br/rakuten/
+*/
+/*A Function abaixo (geo_clima) define o que sera apresentado para usuário através recurso Sortcode nativo no Wordpress*/   
+function geo_clima(){ 
+?>
 
+<!--A estrutura html abaixo trazem os resultados e apresentam para o usuário os resultados de latitude e longitude, cidade, estado, país e clima-->
+<div class="geo-clima">        
+      Temperatura: <span id="temperatura"></span>
+      País: <span id="country"></span>
+      Estado: <span id="state"></span>
+      Cidade: <span id="city"></span>
+      <span id="description"></span>
+      <span id="result"></span>
+</div> 
+
+<!--/*A script abaixo define o inicio da geolocalização*/-->
+     
+<script>
+/* As variáveis declaradas abaixo são utilizadas para tratar os resultados que serão apresentados dentro da div com classe css geo-clima*/
+var x = document.getElementById("result");
+    var country = document.getElementById('country');
+    var state = document.getElementById('state');
+    var city = document.getElementById('city');
+    var temperatura = document.getElementById('temperatura');
+
+/*A function callback trata os dados da api para exibição da geolocalização*/
+    function callback(data) {
+        country.innerHTML = data.country_name;
+        state.innerHTML = data.state;
+        city.innerHTML = data.city;
+    }
+/*O script abaixo trata  o erro de execução caso o navegador não suporte a geolocalização. Referência: https://www.w3schools.com/html/html5_geolocation.asp*/
+    window.onload = function(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Seu browser não suporta Geolocalização.";
+        }
+    }
+/*A function abaixo apresenta a posição de latitude e longitude dentro da estrutura que será exibida html <div id="result"> após tratamento dos dados*/
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            " Longitude: " + position.coords.longitude;
+            lat = position.coords.latitude;
+            long = position.coords.longitude;
+            getWeather(lat, long);
+    }
+   
+/*Tratamento de erros e conexão com a api openweathermap*/
+
+/*A function abaixo exibe mensagem e localização padrão caso não possa ser processado o recurso de geolocalização.*/ 
+    function showError(error) {
+        lat = 23.6815303; 
+        long = 46.8761724;
+        getWeather(lat, long);
+        x.innerHTML = "Latitude: " + lat +
+            " Longitude: " + long +
+            "<p>Não Identificamos sua Localização. Estamos usando a localização padrão São Paulo - SP - Brasil</p>";
+    }
+	
+/*O function abaixo conecta a API Open Weather Map através da APIkey (código de verificação).E constroi, a partir da latitude e longitude, uma URL retornando para o usuário dentro das estruturas html cidade, estado, país e clima*/
+    function getWeather(lat, long) {
+        var ajax = new XMLHttpRequest();
+        var json;
+        var apiKey = " Código apikey aqui!!!"; /*Insira seu código apikey entre as aspas*/
+        var url = "http://api.openweathermap.org/data/2.5/weather?lat="+ lat + "&lon="+ long +"&appid=" + apiKey +"&units=metric";
+        ajax.open("GET", url, true);
+        ajax.send();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                json = JSON.parse(ajax.responseText);
+                if (json != undefined) {
+                    var weather = json.weather[0].main;
+                    var temperatura = Math.round(json.main.temp) + "°C";
+                    temp.innerHTML = temperatura;
+                } else {
+                   description = "Ops, não consegui encontrar as informações do tempo ='( " + location;
+                    document.getElementById("description").innerHTML = description;
+                }
+          }
+      }
+ } 
+</script>
+
+<?php
+}
+/*O elemento add_shortcode define o nome Clima para utilizar o recurso Sortcode da function geo_clima e apresenta as estruturas hmtl*/
+ add_shortcode('Clima', 'geo_clima');
+?>
