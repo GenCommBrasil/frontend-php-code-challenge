@@ -2,7 +2,7 @@
 
 add_action("wp_head", "wp_add_plugin_interface");
 
-
+//register get_weather_information() to receive AJAX calls 
 wp_register_script('weather_plugin_js', "/wp-content/plugins/weather_plugin/includes/js/plugin_script.js", array('jquery'));
 wp_localize_script('weather_plugin_js', 'ajaxinfo', array('ajaxurl' => admin_url('admin-ajax.php')));
 wp_enqueue_script('weather_plugin_js');
@@ -19,8 +19,8 @@ function wp_add_plugin_interface()
 
 function get_weather_information()
 {
-	if($_POST["useDefaultInfo"]){
-		$sp_city_id = 3448439;
+	if($_POST["useDefaultInfo"]){		
+		$sp_city_id = 3448439; //information that can be obtained at http://bulk.openweathermap.org/sample/
 		$api_response = file_get_contents("http://api.openweathermap.org/data/2.5/weather?id=" . $sp_city_id . "&units=metric&appid=2e1bb27d71f74a52f0698ac93a3c87dd");
 	}else{
 		$lat = $_POST["lat"];
