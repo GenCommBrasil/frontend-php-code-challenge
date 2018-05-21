@@ -1,0 +1,13 @@
+<style type="text/css">
+
+/*i really want to use rakuten font style, but i dont know if i can*/
+
+.weather_information_container{
+	padding: 2%;
+	font-size: 12px;
+	font-family: arial;
+    font-weight: bold;
+    color: #bf0000;
+}
+
+</style>
