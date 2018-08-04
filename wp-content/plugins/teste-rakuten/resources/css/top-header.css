@@ -1,0 +1,19 @@
+*, *:before, *:after{margin: 0; padding: 0; box-sizing: border-box; -webkit-box-sizing: border-box;}
+
+.top-header {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    float: left;
+    padding: 9px 8%;
+    color: #666666;
+    font-weight: 600;
+    font-size: 12px;
+    background-color: #e1e1e1;
+}
+#temperature {
+    float: right;
+}
+
+#location {
+    float: left;
+}
