@@ -1,7 +1,4 @@
-$(document).ready(function(){
-    var geolocation = navigator.geolocation;
-    geolocation.getCurrentPosition(success, failure);
-});
+navigator.geolocation.getCurrentPosition(success, failure);
 
 function failure() {
     loadLocation('', '');
@@ -14,18 +11,21 @@ function success(position) {
 }
 
 function loadLocation(latitude, longitude) {
-console.log('12');
-    $.ajax({
+    jQuery.ajax({
+        url:'/wp-admin/admin-ajax.php',
         type:'POST',
-        url:'Geolocation.php',
-        data:'lat='+latitude+'&lon='+longitude,
-        success:function(json){
-            var data = $.parseJSON(json);
+        data: {
+            action: 'getLocation',
+            lat: latitude,
+            lon: longitude
+        },
+        success:function(json) {
+            var data = jQuery.parseJSON(json);
             if (data['response'] === true) {
-                $("#location").html("Cidade: " + data.city);
-                $("#temperature").html("Temperatura: " + data.temperature + " ºC");
+                jQuery("#location").html("Cidade: " + data.city);
+                jQuery("#temperature").html("Temperatura: " + data.temperature + " ºC");
             } else {
-                $("#location").html('Previsão do tempo indisponível.');
+                jQuery("#location").html('Previsão do tempo indisponível.');
             }
         }
     });
