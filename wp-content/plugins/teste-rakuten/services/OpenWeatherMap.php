@@ -1,7 +1,7 @@
 <?php
 
-include_once($_SERVER["DOCUMENT_ROOT"] . "/config/Parameters.php");
-include_once($_SERVER["DOCUMENT_ROOT"] . "/helper/TemperatureHelper.php");
+include_once(__DIR__ . "/../config/Parameters.php");
+include_once(__DIR__ . "/../helper/TemperatureHelper.php");
 include_once("Location.php");
 
 /**
