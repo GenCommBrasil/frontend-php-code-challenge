@@ -13,6 +13,7 @@ Existem duas formas para instalar, segue as duas:
 
 # Extras
 Estou compartilhando o ambiente de desenvolvimento do Wordpress que fiz com o Docker, sei que não há a necessidade, mas serve para ter uma idéia de como eu desenvolvi esse teste :) Fiz no Linux Ubuntu, mas dá para usar no OSX ou Windows tranquilamente. Segue as instruções para rodar ele:
+
 | Requisitos |
 | ------ |
 | [Git](https://git-scm.com/) |
