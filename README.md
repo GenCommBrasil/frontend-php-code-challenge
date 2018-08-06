@@ -2,12 +2,12 @@
 Existem duas formas para instalar, segue as duas:
 
 ### Primeira Instrução:
-1. Fazer o Download do Plugin neste link: [Plugin Teste Reakuten](https://drive.google.com/open?id=12aaMYTBFOUedWrrMAfycPp6bTrqzxV9z)
+1. Fazer o Download do Plugin neste link: [Plugin Teste Rakuten](https://drive.google.com/open?id=12aaMYTBFOUedWrrMAfycPp6bTrqzxV9z)
 2. Wordpress no Dashboard ir em: `Plugins > Adicionar novo > Fazer Upload do Plugin > Instalar Agora > Ativar Plugin`.
 3. Pronto!
 
 ### Segunda Instrução:
-1. Fazer o Download do Plugin neste link: [Plugin Teste Reakuten](https://drive.google.com/open?id=12aaMYTBFOUedWrrMAfycPp6bTrqzxV9z)
+1. Fazer o Download do Plugin neste link: [Plugin Teste Rakuten](https://drive.google.com/open?id=12aaMYTBFOUedWrrMAfycPp6bTrqzxV9z)
 2. Descompactar o arquivo ZIP no diretório do Wordpress: `wp-content/plugins/`
 3. No Dashboard ir em: `Plugins > Plugins Instalados > "Teste Rakuten" > Ativar`
 
